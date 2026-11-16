@@ -237,4 +237,67 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+    // ==========================================
+    // 5. DATOS DE SILLUSTANI
+    // ==========================================
+
+    const datosSillustani = [
+        {
+            titulo: "Ubicación",
+            descripcion: "El complejo arqueológico de Sillustani se encuentra cerca de la ciudad de Puno.",
+            categoria: "Patrimonio"
+        },
+        {
+            titulo: "Chullpas",
+            descripcion: "Son construcciones funerarias de piedra que destacan por su arquitectura.",
+            categoria: "Arquitectura"
+        },
+        {
+            titulo: "Lago Umayo",
+            descripcion: "Sillustani se encuentra junto al hermoso lago Umayo.",
+            categoria: "Naturaleza"
+        },
+        {
+            titulo: "Cultura Kolla",
+            descripcion: "El sitio arqueológico está relacionado con la cultura Kolla.",
+            categoria: "Historia"
+        }
+    ];
+
+    // Seleccionar el contenedor del HTML
+    const contenedorDatos = document.querySelector("#contenedor-datos");
+
+    // Función para calcular la cantidad de datos
+    function calcularTotal(datos) {
+        return datos.reduce((total) => total + 1, 0);
+    }
+
+    // Recorrer el arreglo y crear las tarjetas
+    if (contenedorDatos) {
+
+        for (const dato of datosSillustani) {
+
+            const tarjeta = document.createElement("article");
+            const titulo = document.createElement("h3");
+            const descripcion = document.createElement("p");
+            const categoria = document.createElement("span");
+
+            tarjeta.classList.add("tarjeta-dato");
+
+            titulo.textContent = dato.titulo;
+            descripcion.textContent = dato.descripcion;
+            categoria.textContent = dato.categoria;
+
+            tarjeta.append(titulo, descripcion, categoria);
+
+            contenedorDatos.append(tarjeta);
+        }
+
+        // Mostrar resumen
+        const resumen = document.createElement("p");
+        resumen.textContent = "Total de datos registrados: " + calcularTotal(datosSillustani);
+
+        contenedorDatos.append(resumen);
+    }
+
 });
